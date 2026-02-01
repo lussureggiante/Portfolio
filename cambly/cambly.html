@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambly — Jade Wu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'black': '#000000',
+                        'white': '#FFFFFF',
+                        'gray': '#666666',
+                        'gray-light': '#E5E5E5',
+                    },
+                    fontFamily: {
+                        'display': ['Clash Display', 'sans-serif'],
+                        'body': ['Satoshi', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fade up animation */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* Breathing float animation */
+        @keyframes float {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.015); }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Back link hover */
+        .back-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Button hover fill */
+        .btn-fill {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .btn-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+        }
+
+        .btn-fill:hover::before {
+            transform: translateY(0);
+        }
+
+        .btn-fill:hover {
+            color: white;
+        }
+
+        /* Link underline */
+        .link-underline {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-underline:hover {
+            opacity: 0.6;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black font-body antialiased selection:bg-black selection:text-white">
+
+    <!-- Fixed Back Button -->
+    <nav class="fixed top-0 left-0 z-50 p-6 md:p-10">
+        <a href="../index.html" class="back-link inline-flex items-center gap-3 text-black/50 hover:text-black text-sm font-medium tracking-wide">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 md:pt-40 pb-8">
+        <!-- Title -->
+        <div class="text-center px-6 mb-6 md:mb-8">
+            <div class="animate-in">
+                <span class="inline-block text-[11px] font-medium tracking-[0.25em] uppercase text-black/40 mb-6">
+                    Product Localization • UX Design
+                </span>
+            </div>
+            <h1 class="animate-in font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-black tracking-tight" style="animation-delay: 0.15s;">
+                Cambly
+            </h1>
+        </div>
+
+        <!-- Full-Bleed Hero Image -->
+        <div class="w-full overflow-hidden">
+            <img 
+                src="cambly-hero.jpg" 
+                alt="Cambly project showcase" 
+                class="w-full h-auto float"
+            >
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-24 md:py-32 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-xl md:text-2xl leading-relaxed text-black/80">
+                <a href="https://www.cambly.com" target="_blank" rel="noopener noreferrer" class="link-underline font-medium text-black">Cambly Inc.</a> 
+                is a California-based technological & educational start-up focusing on learning the English language.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mockup Image -->
+    <section class="px-6 pb-24 md:pb-32">
+        <div class="max-w-6xl mx-auto animate-in">
+            <img 
+                src="cambly-mockup.jpg" 
+                alt="Cambly app redesign mockup" 
+                class="w-full h-auto"
+            >
+        </div>
+    </section>
+
+    <!-- Description Section -->
+    <section class="py-24 md:py-32 px-6 border-t border-gray-light">
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6 text-lg md:text-xl leading-relaxed text-black/80">
+                <p>
+                    During my work at Cambly in 2021, I collaborated with the general manager and engineers in the team as the <strong class="text-black font-semibold">sole design/product person</strong>.
+                </p>
+                <p>
+                    Together, we <strong class="text-black font-semibold">redesigned and launched the Cambly App</strong> on the WeChat platform and <strong class="text-black font-semibold">localized the product</strong> with additional features targeting the greater China region.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg md:text-xl text-black/60 mb-4">
+                For more details about my experience at Cambly as a product & UX designer,
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-12">
+                I'm happy to chat :)
+            </h2>
+            <div>
+                <a 
+                    href="../contact.html" 
+                    class="btn-fill relative inline-block px-12 py-5 bg-transparent text-black text-xs font-semibold tracking-[0.2em] uppercase border-2 border-black z-10"
+                >
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-light py-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-black/30 tracking-wide">© 2026 Jade Wu</p>
+        </div>
+    </footer>
+
+</body>
+</html>
