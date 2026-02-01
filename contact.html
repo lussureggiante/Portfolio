@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Jade Wu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green': '#008000',
+                        'green-dark': '#0F4D0F',
+                        'black': '#000000',
+                        'white': '#FFFFFF',
+                        'gray': '#666666',
+                        'gray-light': '#E5E5E5',
+                    },
+                    fontFamily: {
+                        'display': ['Clash Display', 'sans-serif'],
+                        'body': ['Satoshi', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fade up animation */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* Form inputs */
+        .form-input {
+            width: 100%;
+            padding: 16px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #E5E5E5;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #008000;
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        /* Button hover fill */
+        .btn-fill {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .btn-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #008000;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: -1;
+        }
+
+        .btn-fill:hover::before {
+            transform: translateY(0);
+        }
+
+        .btn-fill:hover {
+            color: white;
+            border-color: #008000;
+        }
+
+        /* Nav link underline */
+        .nav-underline {
+            position: relative;
+        }
+
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Footer link underline */
+        .link-underline {
+            position: relative;
+        }
+
+        .link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .link-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black font-body antialiased selection:bg-green selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-light">
+        <div class="max-w-7xl mx-auto px-8 md:px-16 py-5 flex items-center justify-between">
+            <a href="index.html" class="font-display text-lg font-semibold tracking-tight hover:text-green transition-colors">
+                Jade Wu
+            </a>
+
+            <ul class="hidden md:flex items-center gap-10">
+                <li>
+                    <a href="index.html" class="nav-underline text-sm font-medium text-gray hover:text-black transition-colors">Work</a>
+                </li>
+                <li>
+                    <a href="about.html" class="nav-underline text-sm font-medium text-gray hover:text-black transition-colors">About</a>
+                </li>
+                <li>
+                    <a href="art.html" class="nav-underline text-sm font-medium text-gray hover:text-black transition-colors">Art</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="text-sm font-medium text-black">Contact</a>
+                </li>
+            </ul>
+
+            <button id="navToggle" class="md:hidden flex flex-col gap-1.5">
+                <span class="w-5 h-px bg-black"></span>
+                <span class="w-5 h-px bg-black"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-b border-gray-light">
+            <ul class="px-8 py-6 space-y-4">
+                <li><a href="index.html" class="text-lg font-medium text-gray">Work</a></li>
+                <li><a href="about.html" class="text-lg font-medium text-gray">About</a></li>
+                <li><a href="art.html" class="text-lg font-medium text-gray">Art</a></li>
+                <li><a href="contact.html" class="text-lg font-medium text-black">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-36 md:pt-48 pb-32 md:pb-40">
+        <div class="max-w-2xl mx-auto px-8 md:px-16">
+            
+            <!-- Heading -->
+            <div class="text-center mb-16">
+                <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-4 animate-in">
+                    Let's <span class="text-green">connect</span> :)
+                </h1>
+                <p class="text-base text-black/60 animate-in" style="animation-delay: 0.1s;">
+                    Have a project in mind, a question, or just want to say hello?
+                </p>
+            </div>
+
+            <!-- Form -->
+            <!-- ============================================
+                 SETUP: Replace YOUR_FORM_ID with your Formspree ID
+                 1. Go to formspree.io
+                 2. Create free account
+                 3. Create new form → get your form ID
+                 4. Replace action URL below
+            ============================================= -->
+            <form 
+                action="https://formspree.io/f/YOUR_FORM_ID" 
+                method="POST"
+                class="space-y-8 animate-in" 
+                style="animation-delay: 0.2s;"
+            >
+                
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-xs font-medium tracking-[0.15em] uppercase text-black/40 mb-2">
+                        Name
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required
+                        placeholder="Your name"
+                        class="form-input"
+                    >
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-xs font-medium tracking-[0.15em] uppercase text-black/40 mb-2">
+                        Email
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        placeholder="your@email.com"
+                        class="form-input"
+                    >
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label for="message" class="block text-xs font-medium tracking-[0.15em] uppercase text-black/40 mb-2">
+                        Message
+                    </label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        rows="5"
+                        required
+                        placeholder="What's on your mind?"
+                        class="form-input resize-none"
+                    ></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-4">
+                    <button 
+                        type="submit"
+                        class="btn-fill relative px-12 py-4 bg-transparent text-black text-xs font-semibold tracking-[0.2em] uppercase border-2 border-black z-10"
+                    >
+                        Send Message
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Alternative Contact -->
+            <div class="mt-16 pt-12 border-t border-gray-light text-center animate-in" style="animation-delay: 0.3s;">
+                <p class="text-sm text-black/40 mb-4">Or reach out directly</p>
+                <div class="flex items-center justify-center gap-8">
+                    <a href="mailto:c.jade.wu@gmail.com" class="link-underline text-sm font-medium text-black/60 hover:text-black transition-colors">Email</a>
+                    <a href="https://www.linkedin.com/in/wucaijue/" target="_blank" rel="noopener noreferrer" class="link-underline text-sm font-medium text-black/60 hover:text-black transition-colors">LinkedIn</a>
+                    <a href="https://www.instagram.com/lussureggiante/" target="_blank" rel="noopener noreferrer" class="link-underline text-sm font-medium text-black/60 hover:text-black transition-colors">Instagram</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-light py-10 bg-white">
+        <div class="max-w-7xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray">© 2026 Jade Wu</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
